@@ -1,11 +1,4 @@
---
--- xmonad example config file.
---
--- A template showing all available configuration hooks,
--- and how to override the defaults in your own xmonad.hs conf file.
---
--- Normally, you'd only override those defaults you care about.
---
+-- Xmonad config file by Dimitrios Papakonstantinou
 
 import Data.Map qualified as M
 import Data.Monoid
@@ -29,7 +22,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth = 2
+myBorderWidth = 3
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -233,7 +226,7 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "feh --bg-scale feh --bg-scale /home/dimi/Pictures/Wallpapers/haskell.png"
+  spawnOnce "feh --bg-scale feh --bg-scale /home/dimitrios/Pictures/Wallpapers/haskell.png"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
