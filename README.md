@@ -2,3 +2,4 @@
 
 - feh
 - gmrun
+- xmobar
