@@ -193,6 +193,7 @@ myManageHook =
   composeAll
     [ className =? "MPlayer" --> doFloat,
       className =? "Gimp" --> doFloat,
+      className =? "Spotify" --> doFloat,
       resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore
     ]
