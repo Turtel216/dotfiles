@@ -218,7 +218,7 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = dynamicLogWithPP $ def {ppOutput = hPutStrLn xmproc}
 
 ------------------------------------------------------------------------
 -- Startup hook
@@ -265,7 +265,7 @@ defaults =
       layoutHook = myLayout,
       manageHook = myManageHook,
       handleEventHook = myEventHook,
-      logHook = dynamicLogWithPP $ def {ppOutput = hPutStrLn xmproc},
+      logHook = myLogHook,
       startupHook = myStartupHook
     }
 
