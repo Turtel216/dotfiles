@@ -238,7 +238,7 @@ myStartupHook = do
 --
 
 main = do
-  xproc <- spawnPipe "xmobar -x 0 ~/.config/xmonad/xmobar/xmobarrc"
+  xmproc <- spawnPipe "xmobar -x 0"
   xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
@@ -265,7 +265,7 @@ defaults =
       layoutHook = myLayout,
       manageHook = myManageHook,
       handleEventHook = myEventHook,
-      logHook = myLogHook,
+      logHook = dynamicLogWithPP $ def {ppOutput = hPutStrLn xmproc},
       startupHook = myStartupHook
     }
 
