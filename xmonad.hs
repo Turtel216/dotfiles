@@ -162,7 +162,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) =
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStructs (tiled ||| Mirror tiled ||| Full)
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = Tall nmaster delta ratio
@@ -229,15 +229,16 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "feh --bg-scale feh --bg-scale /home/dimitrios/Pictures/Wallpapers/haskell.png"
+  spawnOnce "feh --bg-scale feh --bg-scale ~/Pictures/Wallpapers/haskell.png"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
+
 main = do
-  xmproc <- spawnPipe "xmobar /home/dimitrios/.config/xmonad/xmobarrc"
+  xproc <- spawnPipe "xmobar -x 0 ~/.config/xmonad/xmobar/xmobarrc"
   xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
