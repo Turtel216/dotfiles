@@ -4,10 +4,10 @@ import Data.Map qualified as M
 import Data.Monoid
 import System.Exit
 import XMonad
+import XMonad.Hooks.ManageDocks
 import XMonad.StackSet qualified as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-import XMonad.Hooks.ManageDocks
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
@@ -121,7 +121,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
       --
       [ ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..],
+        | (key, sc) <- zip [xK_bracketleft, xK_bracketleft, xK_r] [0 ..],
           (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
       ]
 
