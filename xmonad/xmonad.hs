@@ -229,7 +229,7 @@ myLogHook = return () -- dynamicLogWithPP $ def {ppOutput = hPutStrLn xmproc}
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "feh --bg-scale feh --bg-scale ~/Pictures/Wallpapers/haskell.png"
+  spawnOnce "feh --bg-scale feh --bg-scale ~/Pictures/Wallpapers/psych1.png"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
