@@ -1,7 +1,7 @@
 Config { 
 
    -- appearance
-     font =         "Bitstream Vera Sans Mono 8"
+     font =         "Bitstream Vera Sans Mono 14"
    , bgColor =      "black"
    , fgColor =      "#646464"
    , position =     Top

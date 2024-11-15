@@ -7,7 +7,7 @@ import XMonad
 import XMonad.StackSet qualified as W
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-import Xmonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageDocks
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
