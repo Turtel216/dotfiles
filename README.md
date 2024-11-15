@@ -1,6 +1,1 @@
-# Dependencies
-
-- feh
-- gmrun
-- xmobar
-- xmonad-contrib
+# Dimitrios Papakonstantinou's dotfiles
