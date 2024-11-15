@@ -27,4 +27,6 @@ SPACESHIP_CHAR_SYMBOL="⚡"
 # Turn off power status when using spaceship prompt
 export SPACESHIP_BATTERY_SHOW=false
 
+export PATH=/home/dimitrios/.ghcup/bin:$PATH
+
 eval "$(zoxide init zsh)"
