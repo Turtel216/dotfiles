@@ -13,8 +13,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='nvim'
-
 # starting dir
 cd ~/repos
 
