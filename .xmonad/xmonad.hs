@@ -60,6 +60,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
       -- launch firefox
       ((modm, xK_b), spawn "firefox"),
+      -- launch emacs
+      ((modm, xK_d), spawn "emacsclient -c -a 'emacs'"),
       -- launch dmenu
       ((modm, xK_p), spawn "dmenu_run"),
       -- launch gmrun
@@ -233,6 +235,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
   spawnOnce "feh --bg-scale feh --bg-scale ~/Pictures/Wallpapers/psych1.png"
+  spawnOnce "/usr/bin/emacs --daemon"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
