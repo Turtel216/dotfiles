@@ -4,6 +4,7 @@ import Data.Map qualified as M
 import Data.Monoid
 import System.Exit
 import XMonad
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.StackSet qualified as W
 import XMonad.Util.Run
@@ -57,6 +58,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
+      -- launch firefox
+      ((modm, xK_b), spawn "firefox"),
       -- launch dmenu
       ((modm, xK_p), spawn "dmenu_run"),
       -- launch gmrun
@@ -121,7 +124,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
       --
       [ ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_bracketleft, xK_bracketleft, xK_r] [0 ..],
+        | (key, sc) <- zip [xK_bracketleft, xK_bracketright, xK_r] [0 ..],
           (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
       ]
 
@@ -218,7 +221,7 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return () -- dynamicLogWithPP $ def {ppOutput = hPutStrLn xmproc}
+myLogHook = return ()
 
 ------------------------------------------------------------------------
 -- Startup hook
