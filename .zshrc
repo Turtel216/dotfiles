@@ -13,8 +13,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# starting dir
-cd ~/repos
+export EDITOR='nvim'
 
 # auto suggest
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#663399,standout"
@@ -25,6 +24,11 @@ SPACESHIP_CHAR_SYMBOL="⚡"
 # Turn off power status when using spaceship prompt
 export SPACESHIP_BATTERY_SHOW=false
 
-export PATH=/home/dimitrios/.ghcup/bin:$PATH
+export PATH=~/.ghcup/bin:$PATH
+export PATH=~/go/bin/:$PATH
+export PATH=$PATH:/usr/local/go/bin
+export PATH=~/.config/emacs/bin:$PATH
+
+alias emacs="emacsclient -c -a 'emacs'"
 
 eval "$(zoxide init zsh)"
