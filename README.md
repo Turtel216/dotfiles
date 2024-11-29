@@ -14,3 +14,7 @@
 - dmenu
 - xclip 
 - ttf-jetbrains-mono-nerd
+- emacs
+- doom emacs
+ * ripgrep 
+ * fd
