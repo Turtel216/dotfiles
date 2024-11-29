@@ -16,5 +16,5 @@
 - ttf-jetbrains-mono-nerd
 - emacs
 - doom emacs
- * ripgrep 
- * fd
+   * ripgrep 
+   * fd
