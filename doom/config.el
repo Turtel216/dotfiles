@@ -42,8 +42,9 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-;; font size
-(setq doom-font (font-spec :size 16 ))
+;; custome font
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
