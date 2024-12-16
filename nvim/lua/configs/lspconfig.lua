@@ -17,11 +17,11 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.gopls.setup {}
-lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup {}
 lspconfig.clangd.setup {}
 lspconfig.asm_lsp.setup {}
 lspconfig.hls.setup {}
-lspconfig.hlint.setup {}
+--lspconfig.hlint.setup {}
 
 -- on save autoformating for Go
 autocmd("BufWritePre", {
