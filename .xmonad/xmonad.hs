@@ -94,6 +94,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm, xK_l), sendMessage Expand),
       -- Push window back into tiling
       ((modm, xK_t), withFocused $ windows . W.sink),
+      ((modm, xK_Print), spawn "scrot"),
       -- Increment the number of windows in the master area
       ((modm, xK_comma), sendMessage (IncMasterN 1)),
       -- Deincrement the number of windows in the master area
@@ -244,7 +245,7 @@ myStartupHook = do
 --
 
 main = do
-  xmproc <- spawnPipe "xmobar -x 0"
+  xmproc <- spawnPipe "xmobar -x 0 /home/dimitrios/.config/.xmobar/xmobarrc"
   xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
