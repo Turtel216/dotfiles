@@ -95,17 +95,6 @@
     ];
   };
 
-programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    ohMyZsh.theme = "lambda";
-    ohMyZsh.enable = true;
-    ohMyZsh.plugins = [ "git" ];
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-  };
-  users.defaultUserShell = pkgs.zsh;
-
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -115,7 +104,6 @@ programs.zsh = {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  	home-manager
 	xmobar
 	git
 	spotify
@@ -139,6 +127,17 @@ programs.zsh = {
 ];
 
 fonts.fontconfig.enable = true;
+
+programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    ohMyZsh.theme = "lambda";
+    ohMyZsh.enable = true;
+    ohMyZsh.plugins = [ "git" ];
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
