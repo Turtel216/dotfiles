@@ -118,6 +118,7 @@ programs.zsh = {
   	home-manager
 	xmobar
 	git
+	spotify
 	discord
 	scrot
 	neovim
@@ -126,9 +127,13 @@ programs.zsh = {
 	zoxide
 	feh
 	dmenu
+	trayer
 	fastfetch
 	oh-my-zsh
 	jetbrains-mono
+	font-awesome
+	mononoki
+	htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
