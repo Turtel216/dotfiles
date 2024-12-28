@@ -130,11 +130,15 @@ programs.zsh = {
 	trayer
 	fastfetch
 	oh-my-zsh
-	jetbrains-mono
-	font-awesome
-	mononoki
 	htop
   ];
+
+  fonts.packages = with pkgs; [
+	(nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" "Mononoki" ]; })
+	mononoki
+];
+
+fonts.fontconfig.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
