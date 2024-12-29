@@ -130,6 +130,7 @@
 	docker
 	docker-compose
 	nodejs_22
+	gcc_multi
 	# Other
 	git
 	discord
