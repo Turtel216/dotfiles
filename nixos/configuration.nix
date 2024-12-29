@@ -51,7 +51,7 @@
   services.xserver.windowManager.xmonad = {
    enable = true;
    enableContribAndExtras = true;
-   config = /home/dimitrios/.config/.xmonad/xmonad.hs;
+   config = /home/dimitrios/.xmonad/xmonad.hs;
 };
 
   # Enable the GNOME Desktop Environment.
@@ -136,6 +136,7 @@
 	spotify
 	fastfetch
 	neovim
+	alsa-utils # amixer
   ];
 
   fonts.packages = with pkgs; [

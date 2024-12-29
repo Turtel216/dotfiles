@@ -64,8 +64,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm, xK_d), spawn "emacsclient -c -a 'emacs'"),
       -- launch dmenu
       ((modm, xK_p), spawn "dmenu_run"),
-      -- launch gmrun
-      ((modm .|. shiftMask, xK_p), spawn "gmrun"),
+      -- Take a screen shot
+      ((modm .|. shiftMask, xK_p), spawn "scrot -e 'mv $f ~/Pictures/Screenshots/'"),
       -- close focused window
       ((modm .|. shiftMask, xK_c), kill),
       -- Rotate through the available layout algorithms
@@ -94,7 +94,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       ((modm, xK_l), sendMessage Expand),
       -- Push window back into tiling
       ((modm, xK_t), withFocused $ windows . W.sink),
-      ((modm, xK_Print), spawn "scrot"),
       -- Increment the number of windows in the master area
       ((modm, xK_comma), sendMessage (IncMasterN 1)),
       -- Deincrement the number of windows in the master area
@@ -201,7 +200,6 @@ myManageHook =
   composeAll
     [ className =? "MPlayer" --> doFloat,
       className =? "Gimp" --> doFloat,
-      className =? "Spotify" --> doFloat,
       resource =? "desktop_window" --> doIgnore,
       resource =? "kdesktop" --> doIgnore
     ]
@@ -283,9 +281,9 @@ help =
     [ "The default modifier key is 'alt'. Default keybindings:",
       "",
       "-- launching and killing programs",
-      "mod-Shift-Enter  Launch xterminal",
+      "mod-Shift-Enter  Launch terminal",
       "mod-p            Launch dmenu",
-      "mod-Shift-p      Launch gmrun",
+      "mod-Shift-p      Take a screenshot, outputs in ~/Pictures/Screenshots",
       "mod-Shift-c      Close/kill the focused window",
       "mod-Space        Rotate through the available layout algorithms",
       "mod-Shift-Space  Reset the layouts on the current workSpace to default",
