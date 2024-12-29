@@ -121,6 +121,15 @@
 	emacs
 	ripgrep
 	fd
+	# Dev packages
+	gopls
+	rustup
+	ghc
+	cabal-install
+	haskell-language-server
+	docker
+	docker-compose
+	nodejs_22
 	# Other
 	git
 	discord
