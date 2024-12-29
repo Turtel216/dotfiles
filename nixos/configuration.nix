@@ -8,6 +8,7 @@
 	  imports =
 	    [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
@@ -104,21 +105,28 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+	# Xmonad
 	xmobar
-	git
-	spotify
-	discord
+	feh
+	dmenu
+	htop
 	scrot
-	neovim
+	trayer
+	# Terminal
 	kitty
 	xclip
 	zoxide
-	feh
-	dmenu
-	trayer
-	fastfetch
 	oh-my-zsh
-	htop
+	# Doom Emacs
+	emacs
+	ripgrep
+	fd
+	# Other
+	git
+	discord
+	spotify
+	fastfetch
+	neovim
   ];
 
   fonts.packages = with pkgs; [
