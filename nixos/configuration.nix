@@ -96,6 +96,13 @@
     ];
   };
 
+  home-manager = {
+     extraSpecialArgs = { inherit inputs; };
+     users = {
+        "dimitrios" = import ./home.nix;
+    };
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -141,8 +148,9 @@
   ];
 
   fonts.packages = with pkgs; [
-	(nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" "Mononoki" ]; })
-	mononoki
+	nerd-fonts.jetbrains-mono
+	nerd-fonts.ubuntu
+	nerd-fonts.mononoki
 ];
 
 fonts.fontconfig.enable = true;
