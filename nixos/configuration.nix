@@ -48,11 +48,12 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.xserver.windowManager.xmonad = {
-   enable = true;
-   enableContribAndExtras = true;
-   config = /home/dimitrios/.xmonad/xmonad.hs;
-};
+  # Xmonad Window Manager setup
+  #services.xserver.windowManager.xmonad = {
+   #enable = true;
+   #enableContribAndExtras = true;
+   #config = /home/dimitrios/.xmonad/xmonad.hs;
+#};
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -105,6 +106,13 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  # Hyperland Window Manager
+  programs.hyprland = {
+    enable = true;
+  };
+
+  security.pam.services.hyprlock = {};
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
