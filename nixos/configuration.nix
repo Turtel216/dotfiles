@@ -143,7 +143,8 @@
 	emacs
 	ripgrep
 	fd
-	# Dev packages
+        # Dev packages
+        go
 	ghc
 	cabal-install
 	docker
@@ -181,6 +182,16 @@ programs.neovim = {
   viAlias = true;
   vimAlias = true;
 };
+
+# NvChad
+nixpkgs = { 
+    overlays = [
+      (final: prev: {
+        nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
+      })
+    ];
+  };
+
 users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are

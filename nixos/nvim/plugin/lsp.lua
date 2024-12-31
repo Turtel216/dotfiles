@@ -47,6 +47,12 @@ require('lspconfig').rnix.setup {
     capabilities = capabilities,
 }
 
-require('lspconfig').gopls.setup {}
-require('lspconfig').hls.setup {}
+require('lspconfig').gopls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+require('lspconfig').hls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 require('lspconfig').clangd.setup {}

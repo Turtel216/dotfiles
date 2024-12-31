@@ -14,6 +14,11 @@
     # Neovim theme
     plugin-onedark.url = "github:navarasu/onedark.nvim";
     plugin-onedark.flake = false;
+
+    nvchad4nix = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
