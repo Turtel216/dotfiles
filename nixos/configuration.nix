@@ -112,8 +112,6 @@
     enable = true;
   };
 
-  security.pam.services.hyprlock = {};
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -121,12 +119,19 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 	# Xmonad
-	xmobar
-	feh
-	dmenu
+	#xmobar
+	#feh
+	#dmenu
 	htop
-	scrot
-	trayer
+	#scrot
+	#trayer
+	# Hyprland
+	waybar
+	eww
+	dunst # depends on libnotify
+	libnotify
+	swww
+	rofi-wayland
 	# Terminal
 	kitty
 	xclip
