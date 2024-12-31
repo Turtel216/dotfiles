@@ -112,6 +112,9 @@
     enable = true;
   };
 
+  # Emacs daemon
+  services.emacs.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -134,7 +137,6 @@
 	rofi-wayland
 	# Terminal
 	kitty
-	xclip
 	zoxide
 	oh-my-zsh
 	# Doom Emacs
@@ -142,11 +144,8 @@
 	ripgrep
 	fd
 	# Dev packages
-	gopls
-	rustup
 	ghc
 	cabal-install
-	haskell-language-server
 	docker
 	docker-compose
 	nodejs_22
@@ -156,7 +155,6 @@
 	discord
 	spotify
 	fastfetch
-	neovim
 	alsa-utils # amixer
   ];
 
@@ -177,6 +175,12 @@ programs.zsh = {
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
+
+programs.neovim = {
+  enable = true;
+  viAlias = true;
+  vimAlias = true;
+};
 users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
