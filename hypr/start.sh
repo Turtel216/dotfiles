@@ -7,3 +7,4 @@ swww img ~/Pictures/Wallpapers/psych1.png &
 
 waybar &
 
+dunst &
