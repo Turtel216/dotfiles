@@ -42,6 +42,10 @@
 
     extraPackages = with pkgs; [
       lua-language-server
+      haskell-language-server
+      gopls
+      typescript-language-server
+      rust-analyzer
 
       xclip
       wl-clipboard
