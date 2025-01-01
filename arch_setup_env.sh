@@ -4,7 +4,7 @@
 set -e
 
 # Packages to install from AUR
-AUR_PACKAGES=(neovim emacs xclip xmonad xmonad-contrib xmobar go ttf-jetbrains-mono-nerd feh dmenu zoxide zsh ripgrep fd)
+AUR_PACKAGES=(neovim emacs xclip go ttf-jetbrains-mono-nerd feh dmenu zoxide zsh ripgrep fd spotify discord kitty)
 
 # Function to install packages using pacman
 install_aur_packages() {
@@ -51,6 +51,13 @@ copy_config_files() {
         echo "Copied .zshrc to ~/"
     else
         echo ".zshrc file not found. Skipping."
+    fi
+
+    if [[ -f "kitty.conf" ]]; then
+        cp kitty.conf ~/.config/kitty/ 
+        echo "Copied kitty.conf to ~/"
+    else
+        echo ".kitty.conf file not found. Skipping."
     fi
 }
 
