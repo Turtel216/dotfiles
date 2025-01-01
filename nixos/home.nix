@@ -19,14 +19,6 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  nixpkgs = { 
-    overlays = [
-      (final: prev: {
-        nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
-      })
-    ];
-  };
-
   programs.nvchad = {
     enable = true;
     hm-activation = false;

@@ -26,3 +26,4 @@ end
 lspconfig.ts_ls.setup {}
 lspconfig.gopls.setup {}
 lspconfig.hls.setup {}
+lspconfig.nixd.setup {}

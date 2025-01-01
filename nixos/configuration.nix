@@ -103,6 +103,15 @@
         "dimitrios" = import ./home.nix;
     };
   };
+  
+  # NvChad
+  nixpkgs = { 
+    overlays = [
+      (final: prev: {
+        nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
+      })
+    ];
+  };
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -146,9 +155,11 @@
   # Dev packages
   go
   gopls
+  nixd
   haskell-language-server
   vimPlugins.rustaceanvim
   typescript-language-server
+  rustup
 	ghc
 	cabal-install
 	docker
@@ -161,6 +172,7 @@
 	spotify
 	fastfetch
 	alsa-utils # amixer
+  home-manager
   ];
 
   fonts.packages = with pkgs; [
@@ -181,16 +193,8 @@ programs.zsh = {
     syntaxHighlighting.enable = true;
   };
 
-# NvChad
-nixpkgs = { 
-    overlays = [
-      (final: prev: {
-        nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
-      })
-    ];
-  };
 
-users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
