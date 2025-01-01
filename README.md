@@ -1,8 +1,23 @@
 # Dimitrios Papakonstantinou's dotfiles
 
----
+## Prerequisite and other dependencies
 
-Currently running [NixOS](https://nixos.org/)
-
-> [!WARNING]  
-> The Neovim [config](https://github.com/Turtel216/dotfiles/tree/main/nvim) is currently incompatible with NixOS.
+- kitty
+    * ttf-jetbrains-mono-nerd
+- neovim
+    * xclip
+- xmonad
+    * xmonad-contrib
+    * xmobar
+    * feh
+    * dmenu
+- doom emacs
+    * emacs
+    * ripgrep 
+    * fd
+    * To see other missing dependencies run
+        ```bash
+        doom doctor
+        ```
+- zoxide
+- zsh
