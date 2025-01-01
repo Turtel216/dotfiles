@@ -143,8 +143,12 @@
 	emacs
 	ripgrep
 	fd
-        # Dev packages
-        go
+  # Dev packages
+  go
+  gopls
+  haskell-language-server
+  vimPlugins.rustaceanvim
+  typescript-language-server
 	ghc
 	cabal-install
 	docker
@@ -176,12 +180,6 @@ programs.zsh = {
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
-
-programs.neovim = {
-  enable = true;
-  viAlias = true;
-  vimAlias = true;
-};
 
 # NvChad
 nixpkgs = { 

@@ -27,7 +27,11 @@
     ];
   };
 
-  programs.nvchad.enable = true;
+  programs.nvchad = {
+    enable = true;
+    hm-activation = false;
+    backup = false;
+  };
 
 
   # The home.packages option allows you to install Nix packages into your
@@ -83,7 +87,7 @@
   #  /etc/profiles/per-user/dimitrios/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
