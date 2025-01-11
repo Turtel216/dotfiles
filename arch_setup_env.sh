@@ -4,7 +4,7 @@
 set -e
 
 # Packages to install from AUR
-AUR_PACKAGES=(neovim emacs xclip go ttf-jetbrains-mono-nerd feh dmenu zoxide zsh ripgrep fd spotify discord kitty)
+AUR_PACKAGES=(neovim emacs xclip go ttf-jetbrains-mono-nerd feh dmenu zoxide zsh ripgrep fd spotify discord kitty cmatrix)
 
 # Function to install packages using pacman
 install_aur_packages() {
