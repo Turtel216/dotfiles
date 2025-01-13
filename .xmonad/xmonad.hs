@@ -233,7 +233,7 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "feh --bg-scale feh --bg-scale ~/Documents/dotfiles/Wallpapers/lord-of-the-rings.jpg"
+  spawnOnce "feh --bg-scale feh --bg-scale ~/Documents/dotfiles/Wallpapers/GoWallpaper.png"
   spawnOnce "/usr/bin/emacs --daemon"
 
 ------------------------------------------------------------------------
