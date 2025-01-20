@@ -31,4 +31,7 @@ export PATH=~/.config/emacs/bin:$PATH
 
 alias emacs="emacsclient -c -a 'emacs'"
 
+alias vim="nvim"
+alias vi="nvim"
+
 eval "$(zoxide init zsh)"
