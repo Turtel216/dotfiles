@@ -21,8 +21,8 @@ lspconfig.ts_ls.setup {}
 lspconfig.clangd.setup {}
 lspconfig.asm_lsp.setup {}
 lspconfig.hls.setup {}
-lspconfig.sqlls.setup {}
 lspconfig.gleam.setup {}
+lspconfig.zls.setup {}
 --lspconfig.hlint.setup {}
 
 -- on save autoformating for Go
