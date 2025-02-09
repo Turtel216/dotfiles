@@ -23,7 +23,6 @@ lspconfig.asm_lsp.setup {}
 lspconfig.hls.setup {}
 lspconfig.gleam.setup {}
 lspconfig.zls.setup {}
-lspconfig.pyright.setup {}
 --lspconfig.hlint.setup {}
 
 -- on save autoformating for Go
