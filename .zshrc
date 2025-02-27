@@ -29,9 +29,13 @@ export PATH=~/go/bin/:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.config/emacs/bin:$PATH
 
+# Start Emacs server if it's not already running
+if [[ -z "$(pgrep emacs)" ]]; then
+    emacs --daemon
+fi
+
 alias emacs="emacsclient -c -a 'emacs'"
 
-alias vim="nvim"
-alias vi="nvim"
-
 eval "$(zoxide init zsh)"
+
+[ -f "/home/dimitrios/.ghcup/env" ] && . "/home/dimitrios/.ghcup/env" # ghcup-env
