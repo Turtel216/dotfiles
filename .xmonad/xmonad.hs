@@ -60,6 +60,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
       -- launch firefox
       ((modm, xK_b), spawn "firefox"),
+      -- launch emacs
+      ((modm, xK_d), spawn "emacsclient -c -a 'emacs'"),
       -- launch dmenu
       ((modm, xK_p), spawn "dmenu_run"),
       -- Take a screen shot

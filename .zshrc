@@ -29,11 +29,6 @@ export PATH=~/go/bin/:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.config/emacs/bin:$PATH
 
-# Start Emacs server if it's not already running
-if [[ -z "$(pgrep emacs)" ]]; then
-    emacs --daemon
-fi
-
 alias emacs="emacsclient -c -a 'emacs'"
 
 eval "$(zoxide init zsh)"
