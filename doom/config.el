@@ -46,6 +46,12 @@
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
 
+;; eww config
+;; Set hotkey
+(map! :leader
+      :desc "Open eww browser" "o w" #'eww)
+;; Set homepage
+(setq eww-homepage "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
