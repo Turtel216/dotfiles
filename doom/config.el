@@ -53,6 +53,10 @@
 ;; Set homepage
 (setq eww-homepage "https://en.wikipedia.org/wiki/The_Lord_of_the_Rings")
 
+;; Toggle block comment
+(map! :leader
+      :desc "Toggle block comment" "b /" #'comment-or-uncomment-region)
+
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
