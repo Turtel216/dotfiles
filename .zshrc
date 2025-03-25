@@ -28,6 +28,7 @@ export PATH=~/.ghcup/bin:$PATH
 export PATH=~/go/bin/:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.config/emacs/bin:$PATH
+export PATH=~/.cargo/bin:$PATH
 
 alias emacs="emacsclient -c -a 'emacs'"
 
