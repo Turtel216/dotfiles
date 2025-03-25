@@ -13,7 +13,7 @@ import XMonad.Util.SpawnOnce
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "kitty"
+myTerminal = "ghostty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -233,8 +233,9 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "feh --bg-scale feh --bg-scale ~/Documents/dotfiles/Wallpapers/GoWallpaper.png"
-  spawnOnce "/usr/bin/emacs --daemon"
+  spawnOnce "feh --bg-scale feh --bg-scale ~/Documents/dotfiles/Wallpapers/pink_abstract.jpg"
+
+-- spawnOnce "/usr/bin/emacs --daemon"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
