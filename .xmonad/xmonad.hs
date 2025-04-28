@@ -58,8 +58,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
-      -- launch firefox
-      ((modm, xK_b), spawn "firefox"),
+      -- launch Zen
+      ((modm, xK_b), spawn "zen-browser"),
       -- launch emacs
       ((modm, xK_d), spawn "emacsclient -c -a 'emacs'"),
       -- launch dmenu
