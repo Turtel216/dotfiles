@@ -57,6 +57,9 @@
 (map! :leader
       :desc "Toggle block comment" "b /" #'comment-or-uncomment-region)
 
+;; Run stylish-haskell on save
+(setq haskell-stylish-on-save t)
+
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
