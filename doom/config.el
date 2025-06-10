@@ -60,6 +60,10 @@
 ;; Run stylish-haskell on save
 (setq haskell-stylish-on-save t)
 
+
+(map! :leader
+      :desc "Open Haskell REPL" "h r" #'+haskell/open-repl)
+
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
