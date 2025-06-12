@@ -60,7 +60,7 @@
 ;; Run stylish-haskell on save
 (setq haskell-stylish-on-save t)
 
-
+;; Open Haskell REPL with a keybinding(leader + h + r)
 (map! :leader
       :desc "Open Haskell REPL" "h r" #'+haskell/open-repl)
 
