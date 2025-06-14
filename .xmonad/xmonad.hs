@@ -233,7 +233,8 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "feh --bg-scale feh --bg-scale ~/Documents/dotfiles/Wallpapers/pink_abstract.jpg"
+  spawnOnce "feh --bg-scale feh --bg-scale ~/Documents/dotfiles/Wallpapers/haskell.jpg"
+  spawnOnce "setxkbmap -layout us,gr -option 'grp:alt_shift_toggle'"
 
 -- spawnOnce "/usr/bin/emacs --daemon"
 
