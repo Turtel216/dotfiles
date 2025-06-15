@@ -40,7 +40,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org/")
 
 ;; custome font
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16 :weight 'regular)
