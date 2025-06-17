@@ -64,6 +64,10 @@
 (map! :leader
       :desc "Open Haskell REPL" "h r" #'+haskell/open-repl)
 
+;; Compile Haskell with a keybinding(leader + h + c)
+(map! :leader
+      :desc "Compile Haskell Project" "h c" #'haskell-compile)
+
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
