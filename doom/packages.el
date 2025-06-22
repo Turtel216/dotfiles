@@ -4,6 +4,7 @@
 (package! haskell-mode)
 (package! lsp-haskell)
 (package! compiler-explorer)
+(package! tidal) ;; TidalCycles dev enviroment
 ;; (package! copilot
 ;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 
