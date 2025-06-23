@@ -586,4 +586,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart Applications
 awful.spawn.with_shell("/usr/bin/emacs --daemon")
 awful.spawn.with_shell("compton")
-awful.spawn.with_shell("feh --bg-scale feh --bg-scale ~/Documents/dotfiles/Wallpapers/haskell.jpeg")
+awful.spawn.with_shell("feh --bg-scale ~/Documents/dotfiles/Wallpapers/lord-of-the-rings.jpg")
