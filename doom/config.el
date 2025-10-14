@@ -68,6 +68,14 @@
 (map! :leader
       :desc "Compile Haskell Project" "h c" #'haskell-compile)
 
+;; Evaluate entire Ocaml buffer using utop
+(map! :leader
+      :desc "Evaluate entire Ocaml buffer" "m e" #'utop-eval-buffer)
+
+;; Evaluate Ocaml region using utop
+(map! :leader
+      :desc "Evaluate Ocaml region" "m r" #'utop-eval-region)
+
 ;; accept completion from copilot and fallback to company
 ;; (use-package! copilot
 ;;   :hook (prog-mode . copilot-mode)
