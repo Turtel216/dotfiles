@@ -47,11 +47,8 @@
     
     # XMonad essentials
     dmenu              # Application launcher
-    rofi               # Alternative to dmenu (more features)
     xmobar             # Status bar for XMonad
-    picom              # Compositor for transparency/effects
     feh                # Image viewer and wallpaper setter
-    nitrogen           # Wallpaper manager
     scrot              # Screenshot tool
     flameshot          # Advanced screenshot tool
     xorg.xbacklight    # Screen brightness control
@@ -59,12 +56,10 @@
     pavucontrol        # PulseAudio/PipeWire volume control
     networkmanagerapplet # Network manager tray icon
     
-    # Terminal emulators (choose your preference)
-    alacritty          # GPU-accelerated terminal
-    kitty              # Another great option
+    # Terminal emulator
+    ghostty
     
     # File managers
-    pcmanfm            # Lightweight GUI file manager
     ranger             # Terminal file manager
     
     # Doom Emacs dependencies
@@ -110,6 +105,7 @@
     haskell-language-server
     stack
     haskellPackages.ghcid
+    #hoogle TODO
     
     # C/C++ toolchain
     gcc
@@ -120,29 +116,45 @@
     ccls
     clang-tools
     lldb
+
+    # Ocaml
+    ocaml
+    opam
+    dune_3
+    ocamlPackages.utop
+    ocamlPackages.ocamlformat
+    ocamlPackages.ocp-indent
+    ocamlPackages.merlin
+
     
     # PHP toolchain
     php83
     php83Packages.composer
+   
+    # Nix
+    nixfmt
     
     # Applications
     discord
     ncspot
-    steam
     firefox
     
     # System utilities
     xclip              # Clipboard management
     dunst              # Notification daemon
     libnotify          # Send notifications
-    ghostty            # Terminal emulator
     zoxide             # Better cd
+    fastfetch          # r/unixporn essentials
     
+  ];
+
+  # Add nerdfonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
   ];
 
   # Programs configuration
   programs.zsh.enable = true;
-  programs.steam.enable = true;
   programs.dconf.enable = true; # Required for some applications
 
   # XMonad and X11 configuration
