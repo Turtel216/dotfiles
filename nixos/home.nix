@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "Turtel216";
-  home.homeDirectory = "/home/Turtel216";
+  home.username = "papakonstantinou";
+  home.homeDirectory = "/home/papakonstantinou";
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
@@ -40,7 +40,7 @@
         "node"
         "npm"
       ];
-      theme = "robbyrussell";
+      theme = "lambda";
     };
 
     initExtra = ''
@@ -58,17 +58,18 @@
       # export NVM_DIR="$HOME/.nvm"
       
       # Custom prompt or additional configurations
+      eval "$(zoxide init zsh)"
     '';
   };
 
   # Git configuration
   programs.git = {
     enable = true;
-    userName = "Turtel216";
-    userEmail = "your.email@example.com";  # Change this
+    userName = "papakonstantinou";
+    userEmail = "papakonstantinou.dm@gmai.com";  # Change this
     extraConfig = {
       init.defaultBranch = "main";
-      pull.rebase = false;
+      pull.rebase = true;
     };
   };
 

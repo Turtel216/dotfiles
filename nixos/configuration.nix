@@ -25,9 +25,9 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # User configuration
-  users.users.Turtel216 = {
+  users.users.papakonstantinou = {
     isNormalUser = true;
-    description = "Turtel216";
+    description = "papakonstantinou";
     extraGroups = [ "networkmanager" "wheel" "docker" "video" "audio" ];
     shell = pkgs.zsh;
   };
@@ -68,7 +68,7 @@
     ranger             # Terminal file manager
     
     # Doom Emacs dependencies
-    emacs29-gtk3
+    emacs
     ripgrep
     fd
     
@@ -129,25 +129,15 @@
     discord
     ncspot
     steam
+    firefox
     
     # System utilities
     xclip              # Clipboard management
     dunst              # Notification daemon
     libnotify          # Send notifications
+    ghostty            # Terminal emulator
+    zoxide             # Better cd
     
-    # Fonts
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
-  ];
-
-  # Fonts configuration
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    font-awesome
-    source-han-sans
-    source-han-sans-japanese
-    source-han-serif-japanese
   ];
 
   # Programs configuration
@@ -193,13 +183,6 @@
     setSocketVariable = true;
   };
 
-  # Graphics and gaming
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
   # Audio with PipeWire
   security.rtkit.enable = true;
   services.pipewire = {
@@ -220,3 +203,4 @@
   services.gnome.gnome-keyring.enable = true;
 
   system.stateVersion = "24.05";
+}
