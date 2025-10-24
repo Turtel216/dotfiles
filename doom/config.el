@@ -88,6 +88,18 @@
 ;; Tidal source path
 (setq tidal-boot-script-path "~/.cabal/share/x86_64-osx-ghc-8.8.4/tidal-1.7.4/BootTidal.hs")
 
+(defun +music/spotify ()
+  "Launch spotify inside a vterm buffer."
+  (interactive)
+  (if (get-buffer "*ncspot*")
+      (switch-to-buffer "*ncspot*")
+    (vterm "*ncspot*")
+    (vterm-send-string "ncspot\n")))
+
+;; Hot key for opening spotify
+(map! :leader
+      :desc "Open spotify" "o s" #'+music/spotify)
+
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
