@@ -1,87 +1,126 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
-    imports = [
-    inputs.nvchad4nix.homeManagerModule
-  ];
+  home.username = "Turtel216";
+  home.homeDirectory = "/home/Turtel216";
+  home.stateVersion = "24.05";
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "dimitrios";
-  home.homeDirectory = "/home/dimitrios";
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
-
-  programs.nvchad = {
-    enable = true;
-    hm-activation = false;
-    backup = false;
-  };
-
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/dimitrios/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # ZSH configuration
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    
+    shellAliases = {
+      ll = "ls -lah";
+      la = "ls -A";
+      l = "ls -CF";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      update = "sudo nixos-rebuild switch";
+      hm-update = "home-manager switch";
+      dc = "docker-compose";
+      dcu = "docker-compose up -d";
+      dcd = "docker-compose down";
+      doom-sync = "~/.config/emacs/bin/doom sync";
+      xmonad-rebuild = "xmonad --recompile && xmonad --restart";
+    };
+    
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ 
+        "git" 
+        "docker" 
+        "docker-compose" 
+        "rust"
+        "golang"
+        "node"
+        "npm"
+      ];
+      theme = "robbyrussell";
+    };
+
+    initExtra = ''
+      # Add Doom Emacs to PATH
+      export PATH="$HOME/.config/emacs/bin:$PATH"
+      
+      # Go development
+      export GOPATH="$HOME/go"
+      export PATH="$PATH:$GOPATH/bin"
+      
+      # Rust development
+      export PATH="$PATH:$HOME/.cargo/bin"
+      
+      # NVM for Node version management (optional)
+      # export NVM_DIR="$HOME/.nvm"
+      
+      # Custom prompt or additional configurations
+    '';
+  };
+
+  # Git configuration
+  programs.git = {
+    enable = true;
+    userName = "Turtel216";
+    userEmail = "your.email@example.com";  # Change this
+    extraConfig = {
+      init.defaultBranch = "main";
+      pull.rebase = false;
+    };
+  };
+
+  # Alacritty terminal configuration
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window = {
+        opacity = 0.95;
+        padding = {
+          x = 10;
+          y = 10;
+        };
+      };
+      font = {
+        normal = {
+          family = "FiraCode Nerd Font";
+          style = "Regular";
+        };
+        size = 11.0;
+      };
+      colors = {
+        primary = {
+          background = "0x282c34";
+          foreground = "0xabb2bf";
+        };
+      };
+    };
+  };
+
+  # Rofi configuration
+  programs.rofi = {
+    enable = true;
+    theme = "Arc-Dark";
+    extraConfig = {
+      modi = "drun,run,window";
+      show-icons = true;
+      drun-display-format = "{name}";
+      display-drun = "Applications";
+      display-run = "Run";
+      display-window = "Windows";
+    };
+  };
+
+  # Symlink your existing dotfiles
+  home.file = {
+    ".doom.d".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/doom.d";
+    # Add other dotfile symlinks as needed
+  };
+
+  # Additional packages that you might want
+  home.packages = with pkgs; [
+    # Add any additional user-specific packages here
+  ];
 }

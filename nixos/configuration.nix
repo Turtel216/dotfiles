@@ -1,226 +1,222 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{ config, pkgs, ... }:
 
-{ config, pkgs, inputs, ... }:
-
-	{
-	  imports =
-	    [ # Include the results of the hardware scan.
+{
+  imports =
+    [
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
     ];
 
-  # Bootloader.
+  # Boot loader configuration
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  # Networking
+  networking.hostName = "nixos-dev";
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Set your time zone.
-  time.timeZone = "Europe/Athens";
-
-  # Select internationalisation properties.
+  # Time zone and locale
+  time.timeZone = "UTC";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "el_GR.UTF-8";
-    LC_IDENTIFICATION = "el_GR.UTF-8";
-    LC_MEASUREMENT = "el_GR.UTF-8";
-    LC_MONETARY = "el_GR.UTF-8";
-    LC_NAME = "el_GR.UTF-8";
-    LC_NUMERIC = "el_GR.UTF-8";
-    LC_PAPER = "el_GR.UTF-8";
-    LC_TELEPHONE = "el_GR.UTF-8";
-    LC_TIME = "el_GR.UTF-8";
+  # Enable unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # Enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # User configuration
+  users.users.Turtel216 = {
+    isNormalUser = true;
+    description = "Turtel216";
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" "audio" ];
+    shell = pkgs.zsh;
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # System packages
+  environment.systemPackages = with pkgs; [
+    # Essential tools
+    vim
+    wget
+    curl
+    git
+    htop
+    btop
+    unzip
+    zip
+    tree
+    
+    # XMonad essentials
+    dmenu              # Application launcher
+    rofi               # Alternative to dmenu (more features)
+    xmobar             # Status bar for XMonad
+    picom              # Compositor for transparency/effects
+    feh                # Image viewer and wallpaper setter
+    nitrogen           # Wallpaper manager
+    scrot              # Screenshot tool
+    flameshot          # Advanced screenshot tool
+    xorg.xbacklight    # Screen brightness control
+    arandr             # GUI for xrandr (monitor configuration)
+    pavucontrol        # PulseAudio/PipeWire volume control
+    networkmanagerapplet # Network manager tray icon
+    
+    # Terminal emulators (choose your preference)
+    alacritty          # GPU-accelerated terminal
+    kitty              # Another great option
+    
+    # File managers
+    pcmanfm            # Lightweight GUI file manager
+    ranger             # Terminal file manager
+    
+    # Doom Emacs dependencies
+    emacs29-gtk3
+    ripgrep
+    fd
+    
+    # Docker and Docker Compose
+    docker
+    docker-compose
+    
+    # Shell
+    zsh
+    oh-my-zsh
+    
+    # Go toolchain
+    go
+    gopls
+    gotools
+    go-outline
+    delve              # Go debugger
+    
+    # JavaScript/TypeScript toolchain
+    nodejs_20
+    nodePackages.npm
+    nodePackages.yarn
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.prettier
+    nodePackages.eslint
+    nodePackages.vscode-langservers-extracted
+    
+    # Rust toolchain
+    rustc
+    cargo
+    rustfmt
+    rust-analyzer
+    clippy
+    
+    # Haskell toolchain
+    ghc
+    cabal-install
+    haskell-language-server
+    stack
+    haskellPackages.ghcid
+    
+    # C/C++ toolchain
+    gcc
+    clang
+    cmake
+    gnumake
+    gdb
+    ccls
+    clang-tools
+    lldb
+    
+    # PHP toolchain
+    php83
+    php83Packages.composer
+    
+    # Applications
+    discord
+    ncspot
+    steam
+    
+    # System utilities
+    xclip              # Clipboard management
+    dunst              # Notification daemon
+    libnotify          # Send notifications
+    
+    # Fonts
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ]; })
+  ];
 
-  # Xmonad Window Manager setup
-  #services.xserver.windowManager.xmonad = {
-   #enable = true;
-   #enableContribAndExtras = true;
-   #config = /home/dimitrios/.xmonad/xmonad.hs;
-#};
+  # Fonts configuration
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    font-awesome
+    source-han-sans
+    source-han-sans-japanese
+    source-han-serif-japanese
+  ];
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # Programs configuration
+  programs.zsh.enable = true;
+  programs.steam.enable = true;
+  programs.dconf.enable = true; # Required for some applications
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  # XMonad and X11 configuration
+  services.xserver = {
+    enable = true;
+    
+    # Display manager
+    displayManager = {
+      lightdm = {
+        enable = true;
+        greeters.gtk.enable = true;
+      };
+    };
+    
+    # XMonad window manager
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      extraPackages = haskellPackages: [
+        haskellPackages.xmonad-contrib
+        haskellPackages.xmonad-extras
+        haskellPackages.xmonad
+      ];
+    };
+    
+    # Keyboard layout
+    xkb.layout = "us";
+    # xkb.variant = ""; # Set if you need a variant
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # Set XMonad as default session
+  services.displayManager.defaultSession = "none+xmonad";
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  # Docker configuration
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
+  # Graphics and gaming
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # Audio with PipeWire
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    jack.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # Enable polkit (for authentication dialogs)
+  security.polkit.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dimitrios = {
-    isNormalUser = true;
-    description = "Dimitrios Papakonstantinou";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
-  };
-
-  home-manager = {
-     extraSpecialArgs = { inherit inputs; };
-     users = {
-        "dimitrios" = import ./home.nix;
-    };
-  };
+  # System services
+  services.dbus.enable = true;
   
-  # NvChad
-  nixpkgs = { 
-    overlays = [
-      (final: prev: {
-        nvchad = inputs.nvchad4nix.packages."${pkgs.system}".nvchad;
-      })
-    ];
-  };
+  # Notification daemon
+  services.gnome.gnome-keyring.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Hyperland Window Manager
-  programs.hyprland = {
-    enable = true;
-  };
-
-  # Emacs daemon
-  services.emacs.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-	# Xmonad
-	#xmobar
-	#feh
-	#dmenu
-	htop
-	#scrot
-	#trayer
-	# Hyprland
-	waybar
-	eww
-	dunst # depends on libnotify
-	libnotify
-	swww
-	rofi-wayland
-	# Terminal
-	kitty
-	zoxide
-	oh-my-zsh
-	# Doom Emacs
-	emacs
-	ripgrep
-	fd
-  # Dev packages
-  go
-  gopls
-  nixd
-  haskell-language-server
-  vimPlugins.rustaceanvim
-  typescript-language-server
-  rustup
-	ghc
-	cabal-install
-	docker
-	docker-compose
-	nodejs_22
-	gcc_multi
-	# Other
-	git
-	discord
-	spotify
-	fastfetch
-	alsa-utils # amixer
-  home-manager
-  ];
-
-  fonts.packages = with pkgs; [
-	nerd-fonts.jetbrains-mono
-	nerd-fonts.ubuntu
-	nerd-fonts.mononoki
-];
-
-fonts.fontconfig.enable = true;
-
-programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    ohMyZsh.theme = "lambda";
-    ohMyZsh.enable = true;
-    ohMyZsh.plugins = [ "git" ];
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-  };
-
-
-  users.defaultUserShell = pkgs.zsh;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
-
-}
+  system.stateVersion = "24.05";
