@@ -65,7 +65,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- launch dmenu
       ((modm, xK_p), spawn "dmenu_run"),
       -- Take a screen shot
-      ((modm .|. shiftMask, xK_p), spawn "scrot -e 'mv $f ~/Pictures/Screenshots/'"),
+      ((modm .|. shiftMask, xK_p), spawn "scrot -s -e 'mv $f ~/Pictures/Screenshots/'"),
       -- close focused window
       ((modm .|. shiftMask, xK_c), kill),
       -- Rotate through the available layout algorithms
