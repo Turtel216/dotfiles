@@ -59,7 +59,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf),
       -- launch Zen
-      ((modm, xK_b), spawn "zen-browser"),
+      ((modm, xK_b), spawn "firefox"),
       -- launch emacs
       ((modm, xK_d), spawn "emacsclient -c -a 'emacs'"),
       -- launch dmenu
@@ -233,10 +233,9 @@ myLogHook = return ()
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "feh --bg-scale ~/Documents/dotfiles/Wallpapers/haskell.jpeg"
+  spawnOnce "feh --bg-scale ~/Documents/dotfiles/Wallpapers/emacs.png"
   spawnOnce "setxkbmap -layout us,gr -option 'grp:alt_shift_toggle'"
-
--- spawnOnce "/usr/bin/emacs --daemon"
+  spawnOnce "/usr/bin/emacs --daemon"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -245,7 +244,7 @@ myStartupHook = do
 --
 
 main = do
-  xmproc <- spawnPipe "xmobar -x 0 /home/dimitrios/.xmobar/xmobarrc"
+  xmproc <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
   xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
