@@ -39,7 +39,6 @@
     wget
     curl
     git
-    htop
     btop
     unzip
     zip
@@ -50,7 +49,6 @@
     xmobar             # Status bar for XMonad
     feh                # Image viewer and wallpaper setter
     scrot              # Screenshot tool
-    flameshot          # Advanced screenshot tool
     xorg.xbacklight    # Screen brightness control
     arandr             # GUI for xrandr (monitor configuration)
     pavucontrol        # PulseAudio/PipeWire volume control
@@ -60,7 +58,7 @@
     ghostty
     
     # File managers
-    ranger             # Terminal file manager
+    ranger            
     
     # Doom Emacs dependencies
     emacs
@@ -145,6 +143,7 @@
     libnotify          # Send notifications
     zoxide             # Better cd
     fastfetch          # r/unixporn essentials
+    libtool
     
   ];
 
