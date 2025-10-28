@@ -76,6 +76,18 @@
 (map! :leader
       :desc "Evaluate Ocaml region" "m r" #'utop-eval-region)
 
+;; Add official grammar sources for treesit
+(setq treesit-language-source-alist
+      '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
+        (c . ("https://github.com/tree-sitter/tree-sitter-c"))
+        (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
+        (cmake . ("https://github.com/uyha/tree-sitter-cmake"))
+        (python . ("https://github.com/tree-sitter/tree-sitter-python"))
+        (json . ("https://github.com/tree-sitter/tree-sitter-json"))
+        (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))
+        (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
+        (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))))
+
 ;; accept completion from copilot and fallback to company
 ;; (use-package! copilot
 ;;   :hook (prog-mode . copilot-mode)
@@ -84,9 +96,6 @@
 ;;               ("TAB" . 'copilot-accept-completion)
 ;;               ("C-TAB" . 'copilot-accept-completion-by-word)
 ;;               ("C-<tab>" . 'copilot-accept-completion-by-word)))
-
-;; Tidal source path
-(setq tidal-boot-script-path "~/.cabal/share/x86_64-osx-ghc-8.8.4/tidal-1.7.4/BootTidal.hs")
 
 (defun +music/spotify ()
   "Launch spotify inside a vterm buffer."
